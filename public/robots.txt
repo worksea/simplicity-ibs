@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ibs26.simplicitymedia.com/sitemap.xml

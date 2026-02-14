@@ -1,0 +1,696 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <!-- ===== STICKY HEADER (Minimal — squeeze page) ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-neutral-200/50" id="site-header">
+    <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <img src="/simplicity-logo.png" alt="Simplicity Media" class="h-10 md:h-14 w-auto object-contain" />
+      </a>
+      <!-- CTA -->
+      <a href="#strategy-call" class="group inline-flex items-center justify-center bg-neutral-900 text-white text-base font-accent font-bold px-8 py-3.5 rounded-full hover:bg-neutral-800 hover:-translate-y-0.5 transition-all shadow-lg shadow-neutral-900/20">
+        Book a Strategy Call
+        <svg class="w-5 h-5 ml-2 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- ===== SECTION 1: HERO (Split — Copy Left, Form Right) ===== -->
+    <section class="relative min-h-screen flex flex-col justify-center overflow-hidden bg-neutral-900 hero-fade-in" id="hero">
+      <!-- Video Background -->
+      <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto">
+        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+      </video>
+      <!-- Dark gradient from bottom up -->
+      <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-neutral-950/30"></div>
+
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10 pt-32 pb-12 lg:pt-36 lg:pb-16">
+        <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Left: Copy -->
+          <div>
+            <!-- IBS Badge -->
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/80 text-xs font-accent font-bold uppercase tracking-widest border border-white/10 mb-6">
+              <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+              Live at IBS 2026 &bull; Orlando, FL
+            </span>
+
+            <!-- Headline -->
+            <h1 class="font-accent font-bold tracking-tighter text-4xl md:text-5xl lg:text-[3.5rem] xl:text-6xl text-white max-w-2xl mb-6 leading-[1.08]">
+              Builders Are Wasting <span class="hero-highlight font-accent italic font-normal">Millions</span> on Ads That Don't Work.
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-lg lg:text-xl text-white/80 max-w-xl mb-8 leading-relaxed font-medium">
+              We help builders, remodelers, and home service brands generate real customers using radio, TV, and CTV at <strong class="text-white">50-80% less</strong> than what you're paying now.
+            </p>
+
+            <!-- Quick stats -->
+            <div class="flex flex-wrap gap-8 lg:gap-10 mb-8">
+              <div class="stat-fade-up" style="animation-delay: 0.1s;">
+                <div class="text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight">$2.5B+</div>
+                <div class="text-xs text-white/40 uppercase tracking-wider mt-1">Media Managed</div>
+              </div>
+              <div class="stat-fade-up" style="animation-delay: 0.2s;">
+                <div class="text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight">5,000+</div>
+                <div class="text-xs text-white/40 uppercase tracking-wider mt-1">Brands Scaled</div>
+              </div>
+              <div class="stat-fade-up" style="animation-delay: 0.3s;">
+                <div class="text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight">50-80%</div>
+                <div class="text-xs text-white/40 uppercase tracking-wider mt-1">Cost Savings</div>
+              </div>
+            </div>
+
+            <!-- Glass logo card (under left content) -->
+            <div class="rounded-xl border border-white/[0.08] bg-white/[0.07] backdrop-blur-md px-5 py-3.5 inline-flex items-center gap-4 flex-wrap">
+              <span class="text-[10px] text-white/30 uppercase tracking-widest font-accent font-bold">Trusted by</span>
+              <img src="/images/dreamstyle.png" alt="Dreamstyle Remodeling" class="h-6 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/images/home-depot.png" alt="Home Depot" class="h-7 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/images/3dayblinds.png" alt="3 Day Blinds" class="h-5 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/images/angies-list.svg" alt="Angie's List" class="h-5 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <div id="strategy-call" class="scroll-mt-28">
+            <div class="rounded-2xl border border-white/20 bg-white/[0.05] backdrop-blur-sm p-7 lg:p-9 shadow-2xl shadow-black/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-xl bg-accent-500/20 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="text-lg font-accent font-bold text-white">Free Strategy Call</h2>
+                  <p class="text-xs text-white/40">15 min &bull; No obligation &bull; No hard sell</p>
+                </div>
+              </div>
+              <p class="text-white/50 text-sm mb-6 leading-relaxed">
+                See how builders like you are cutting media costs by 50-80% and getting more calls from homeowners ready to buy.
+              </p>
+
+              <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="strategy-form" class="space-y-4">
+                <input type="hidden" name="_subject" value="IBS 2026 Strategy Call Request" />
+                <input type="hidden" name="_source" value="ibs26.simplicitymedia.com" />
+                <div>
+                  <input type="text" name="name" required placeholder="Full Name *"
+                    class="w-full bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 px-4 py-3 text-sm focus:outline-none focus:border-accent-400 focus:ring-1 focus:ring-accent-400 transition-colors" />
+                </div>
+                <div>
+                  <input type="email" name="email" required placeholder="Work Email *"
+                    class="w-full bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 px-4 py-3 text-sm focus:outline-none focus:border-accent-400 focus:ring-1 focus:ring-accent-400 transition-colors" />
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <input type="tel" name="phone" placeholder="Phone"
+                    class="w-full bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 px-4 py-3 text-sm focus:outline-none focus:border-accent-400 focus:ring-1 focus:ring-accent-400 transition-colors" />
+                  <input type="text" name="company" placeholder="Company"
+                    class="w-full bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 px-4 py-3 text-sm focus:outline-none focus:border-accent-400 focus:ring-1 focus:ring-accent-400 transition-colors" />
+                </div>
+
+                <button type="submit"
+                  class="group w-full inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white rounded-full px-6 py-3.5 font-accent font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-accent-500/25 hover:shadow-xl hover:shadow-accent-500/30">
+                  Get My Free Strategy Session
+                  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </form>
+
+              <p class="text-white/25 text-[11px] mt-3 text-center">
+                No spam. No sharing. Just a real conversation about cutting your costs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: THE PROBLEM (Builder-Specific Pain) ===== -->
+    <section class="relative py-20 lg:py-28 bg-neutral-50 overflow-hidden" id="pain">
+      <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mb-14 lg:mb-18">
+          <span class="inline-block px-3 py-1 rounded bg-accent-50 text-accent-700 text-xs font-bold uppercase tracking-widest border border-accent-100 mb-4">
+            The Problem
+          </span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-accent font-bold text-neutral-900 tracking-tight mb-6">
+            The residential construction industry wastes billions on advertising every year.
+          </h2>
+          <p class="text-neutral-500 text-lg leading-relaxed max-w-2xl mx-auto">
+            Most builders pour money into marketing without knowing what's actually driving calls and closed jobs. Sound familiar?
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Stat Card 1 -->
+          <div class="group relative p-8 lg:p-10 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 text-center">
+            <div class="text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">98%</div>
+            <h3 class="text-xl font-bold text-neutral-900 mb-2">Invisible Visitors</h3>
+            <p class="text-neutral-500 leading-relaxed">
+              of your website visitors research anonymously and leave without a trace. Your CRM never sees them.
+            </p>
+          </div>
+          <!-- Stat Card 2 -->
+          <div class="group relative p-8 lg:p-10 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 text-center">
+            <div class="text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">$63B</div>
+            <h3 class="text-xl font-bold text-neutral-900 mb-2">Lost to Ad Waste</h3>
+            <p class="text-neutral-500 leading-relaxed">
+              lost to invalid traffic and wasted ad spend annually. Builders pay for impressions that never reach real homeowners.
+            </p>
+          </div>
+          <!-- Stat Card 3 -->
+          <div class="group relative p-8 lg:p-10 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 text-center">
+            <div class="text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">40%</div>
+            <h3 class="text-xl font-bold text-neutral-900 mb-2">CTV Spend Wasted</h3>
+            <p class="text-neutral-500 leading-relaxed">
+              of open programmatic CTV spending is wasted due to inaccurate data. That's $7.4 billion in lost value this year.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: WHAT CHANGES (Benefits) ===== -->
+    <section class="relative py-20 lg:py-28 bg-neutral-50 overflow-hidden" id="benefits">
+      <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mb-14 lg:mb-18">
+          <span class="inline-block px-3 py-1 rounded bg-accent-50 text-accent-700 text-xs font-bold uppercase tracking-widest border border-accent-100 mb-4">
+            What Changes
+          </span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-accent font-bold text-neutral-900 tracking-tight mb-5">
+            What happens when you work with Simplicity.
+          </h2>
+          <p class="text-neutral-500 text-lg leading-relaxed">
+            No bloated agency fees. No black-box reporting. Just performance you can see &mdash; built for builders who run real businesses.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <!-- Benefit 1 -->
+          <div class="group relative p-8 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+            <div class="mb-6 relative h-24 overflow-hidden">
+              <span class="absolute -top-4 -left-2 text-[8rem] leading-none font-accent font-bold text-neutral-100 group-hover:text-accent-50 transition-colors duration-300 select-none">01</span>
+            </div>
+            <h3 class="text-2xl lg:text-3xl font-bold mb-4 text-neutral-900">
+              Cut Media Costs by 50-80%
+            </h3>
+            <p class="text-lg text-neutral-500 leading-relaxed group-hover:text-neutral-700 transition-colors">
+              Our $2.5B+ in buying power gets you premium radio, TV, and CTV inventory at rates usually reserved for national brands. The average builder spends 1.8-3.2% of revenue on marketing &mdash; we make every dollar go further.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="group relative p-8 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+            <div class="mb-6 relative h-24 overflow-hidden">
+              <span class="absolute -top-4 -left-2 text-[8rem] leading-none font-accent font-bold text-neutral-100 group-hover:text-accent-50 transition-colors duration-300 select-none">02</span>
+            </div>
+            <h3 class="text-2xl lg:text-3xl font-bold mb-4 text-neutral-900">
+              Get More Calls, Not More Clicks
+            </h3>
+            <p class="text-lg text-neutral-500 leading-relaxed group-hover:text-neutral-700 transition-colors">
+              70% of homebuyers start their search online. Radio and TV build the brand awareness that turns anonymous researchers into inbound calls. Higher-intent leads, not just website traffic.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="group relative p-8 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+            <div class="mb-6 relative h-24 overflow-hidden">
+              <span class="absolute -top-4 -left-2 text-[8rem] leading-none font-accent font-bold text-neutral-100 group-hover:text-accent-50 transition-colors duration-300 select-none">03</span>
+            </div>
+            <h3 class="text-2xl lg:text-3xl font-bold mb-4 text-neutral-900">
+              See Exactly What's Working
+            </h3>
+            <p class="text-lg text-neutral-500 leading-relaxed group-hover:text-neutral-700 transition-colors">
+              Most builders can't connect marketing spend to actual booked jobs. Our cross-channel measurement tells you which channels drive real customers &mdash; not vanity metrics. Eliminate up to 94% of media waste.
+            </p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="group relative p-8 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+            <div class="mb-6 relative h-24 overflow-hidden">
+              <span class="absolute -top-4 -left-2 text-[8rem] leading-none font-accent font-bold text-neutral-100 group-hover:text-accent-50 transition-colors duration-300 select-none">04</span>
+            </div>
+            <h3 class="text-2xl lg:text-3xl font-bold mb-4 text-neutral-900">
+              Scale with Confidence
+            </h3>
+            <p class="text-lg text-neutral-500 leading-relaxed group-hover:text-neutral-700 transition-colors">
+              Whether you're a 6-person shop doing $3.7M or a production builder running hundreds of starts &mdash; we test small, prove performance, then scale only what works. No big upfront commitments.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom double line -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <div class="w-screen relative left-[calc(-50vw+50%)] flex flex-col gap-[3px]">
+          <div class="h-px bg-neutral-200"></div>
+          <div class="h-px bg-neutral-200"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: HOW WE DRIVE DEMAND (3 Pillars) ===== -->
+    <section class="relative py-20 lg:py-28 bg-neutral-900 overflow-hidden" id="system">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-accent-500/[0.04] rounded-full blur-[120px]"></div>
+      </div>
+      <div class="absolute inset-0 opacity-[0.04] grain-overlay pointer-events-none"></div>
+      <!-- Top double line -->
+      <div class="absolute top-0 left-0 right-0">
+        <div class="w-screen relative left-[calc(-50vw+50%)] flex flex-col gap-[3px]">
+          <div class="h-px bg-white/10"></div>
+          <div class="h-px bg-white/10"></div>
+        </div>
+      </div>
+
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mb-14 lg:mb-18">
+          <span class="inline-block px-3 py-1 rounded bg-accent-500/20 text-accent-400 text-xs font-bold uppercase tracking-widest border border-accent-500/30 mb-4">
+            How We Drive Demand
+          </span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-accent font-bold text-white tracking-tight mb-5">
+            A connected system built for builders.
+          </h2>
+          <p class="text-white/50 text-lg leading-relaxed">
+            Not disconnected campaigns. A unified system that creates demand, captures intent, and proves what drove the phone to ring.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <!-- Pillar 1 -->
+          <div class="group relative rounded-3xl border border-white/10 p-7 lg:p-8 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300">
+            <div class="mb-6">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-white/10">
+                <svg class="w-8 h-8 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
+              </div>
+            </div>
+            <span class="text-[11px] font-accent font-bold uppercase tracking-[0.15em] block mb-3 text-accent-400">Efficient Reach</span>
+            <h3 class="text-xl lg:text-2xl font-bold text-white tracking-tight mb-3">
+              Radio, TV &amp; CTV at Fraction of the Cost
+            </h3>
+            <p class="text-white/50 text-[15px] leading-relaxed group-hover:text-white/70 transition-colors">
+              Broadcast and streaming media that puts your brand in front of homeowners before they ever search. Create demand in your market at rates national builders pay &mdash; regardless of your size.
+            </p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="group relative rounded-3xl border border-white/10 p-7 lg:p-8 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300">
+            <div class="mb-6">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-white/10">
+                <svg class="w-8 h-8 text-[#22d3ee]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+            </div>
+            <span class="text-[11px] font-accent font-bold uppercase tracking-[0.15em] block mb-3 text-[#22d3ee]">Capture + Convert</span>
+            <h3 class="text-xl lg:text-2xl font-bold text-white tracking-tight mb-3">
+              Turn Awareness into Booked Jobs
+            </h3>
+            <p class="text-white/50 text-[15px] leading-relaxed group-hover:text-white/70 transition-colors">
+              When a homeowner who's heard your name searches "remodeler near me" &mdash; our digital system captures that intent. Paid search, social ads, and conversion-optimized landing pages turn listeners into leads.
+            </p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="group relative rounded-3xl border border-white/10 p-7 lg:p-8 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300">
+            <div class="mb-6">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-white/10">
+                <svg class="w-8 h-8 text-brand-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+            </div>
+            <span class="text-[11px] font-accent font-bold uppercase tracking-[0.15em] block mb-3 text-brand-orange-400">Prove + Optimize</span>
+            <h3 class="text-xl lg:text-2xl font-bold text-white tracking-tight mb-3">
+              Know What Drove the Phone to Ring
+            </h3>
+            <p class="text-white/50 text-[15px] leading-relaxed group-hover:text-white/70 transition-colors">
+              Every dollar tracked to real results &mdash; not clicks or impressions. We measure what actually produced the customer sitting in your showroom, so you can cut the waste and double down on what works.
+            </p>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="mt-0 flex flex-col items-center">
+          <div class="hidden md:block w-full relative" style="height: 120px;">
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 900 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M150 0 L150 70 L450 70 L450 120" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+              <path d="M450 0 L450 120" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+              <path d="M750 0 L750 70 L450 70 L450 120" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+              <path d="M150 0 L150 70 L450 70 L450 120" stroke="rgba(52,211,153,0.5)" stroke-width="1.5" stroke-dasharray="8 40" class="connector-particle" />
+              <path d="M450 0 L450 120" stroke="rgba(52,211,153,0.5)" stroke-width="1.5" stroke-dasharray="8 40" class="connector-particle connector-particle-2" />
+              <path d="M750 0 L750 70 L450 70 L450 120" stroke="rgba(52,211,153,0.5)" stroke-width="1.5" stroke-dasharray="8 40" class="connector-particle connector-particle-3" />
+            </svg>
+          </div>
+          <div class="md:hidden w-px h-16 bg-gradient-to-b from-white/10 to-emerald-400/30"></div>
+          <div class="relative">
+            <div class="absolute -inset-4 bg-emerald-500/10 rounded-full blur-xl"></div>
+            <div class="relative flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" style="box-shadow: 0 0 8px rgba(52,211,153,0.6), 0 0 20px rgba(52,211,153,0.3);"></div>
+              <span class="text-sm font-accent font-bold text-white/80 tracking-wide">One Connected System</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom double line -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <div class="w-screen relative left-[calc(-50vw+50%)] flex flex-col gap-[3px]">
+          <div class="h-px bg-white/10"></div>
+          <div class="h-px bg-white/10"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: THE PINK ELEPHANT ===== -->
+    <section class="py-20 lg:py-28 bg-white" id="pink-elephant">
+      <div class="max-w-[1400px] mx-auto px-6">
+        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#c0457a] via-[#e85fa2] to-[#f080b8] px-8 py-16 md:px-14 md:py-20 lg:px-20 lg:py-24">
+          <!-- Animated glow -->
+          <div class="testimonial-glow absolute inset-0 pointer-events-none"></div>
+          <!-- Decorative blurs -->
+          <div class="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 w-60 h-60 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
+          <!-- Elephant watermark -->
+          <div class="absolute -bottom-6 -right-6 pointer-events-none z-0">
+            <svg class="w-48 h-48 md:w-64 md:h-64 brightness-0 invert opacity-[0.12]" viewBox="0 0 800 800" fill="currentColor">
+              <path d="M767.5,275.3v281.1c-17.5,115.4-143.3,186.6-243.1,110.4-13-9.9-26.4-20.3-18.2-38.2,3.7-8.2,53-57.1,62.6-65.1,7.3-6,13-9.4,22.8-7,11.8,2.9,14.2,13.9,30,11,3.7-.7,9.4-3.9,11.7-6.9,9.5-12,5.4-59.3-.9-73.6-16.5-37.8-53.6-38.6-89.2-44.1-16.6,33.1-34.3,66.2-46.9,101.2-16.2,44.9-25.3,92.9-28.6,140.6-1.3,19.2,6.6,53.7-20.8,56.6-20.2,2.2-71.8,2.3-91.8,0-6.3-.7-19.4-8.4-19.4-15.1v-114h-84.6v106.9c0,10.2-9.3,20.7-19.5,22.1-28.2,3.8-64.1-2.6-93.1.1-10.9-1.6-18.1-8.2-19.4-19.4-3.1-27.4,1.7-58.7-1.4-87.5-6.5-59.7-34.7-82.3-57.6-131.7C-22.7,324.3,89,115.5,286.3,96c11.1-1.1,37.4.6,45.6-1.8,2.1-.6,17.6-12.6,22.1-15.2,44.7-25.8,93.8-29.7,141.3-8.5,9.5,4.2,35,22.4,40.8,23.7,11.9,2.7,35.7.2,49.9,1.8,91.4,9.9,172.6,86.3,181.5,179.3Z"/>
+              <path d="M601.6,272.9c22.8-21.3,52.5,16.3,28.9,33.9-23.2,17.3-48.4-15.8-28.9-33.9Z"/>
+            </svg>
+          </div>
+
+          <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-[1fr,auto] gap-10 items-center">
+              <div>
+                <span class="inline-block px-3 py-1 rounded bg-white/20 text-white text-xs font-accent font-bold uppercase tracking-widest mb-6">
+                  The Pink Elephant in the Room
+                </span>
+                <h2 class="font-accent font-bold tracking-tighter text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-[1.08]">
+                  Your agency won't tell you this. We will.
+                </h2>
+                <p class="text-lg md:text-xl text-white/90 leading-relaxed mb-4">
+                  There's a Pink Elephant that most media agencies won't talk about: <strong class="text-white">they don't need you to succeed.</strong> They need you to keep spending. Big retainers. Long contracts. Vague reporting.
+                </p>
+                <p class="text-lg md:text-xl text-white/90 leading-relaxed mb-6">
+                  We do it differently. We test small, prove it works with real data, then scale only what's producing results. If it's not working, we tell you &mdash; and we fix it.
+                </p>
+                <p class="text-lg md:text-xl text-white font-bold">
+                  That's why smart operators test before they scale. Ask us how.
+                </p>
+              </div>
+              <!-- Elephant icon large -->
+              <div class="hidden md:flex items-center justify-center">
+                <svg class="w-32 h-32 lg:w-40 lg:h-40 text-white/20" viewBox="0 0 800 800" fill="currentColor">
+                  <path d="M767.5,275.3v281.1c-17.5,115.4-143.3,186.6-243.1,110.4-13-9.9-26.4-20.3-18.2-38.2,3.7-8.2,53-57.1,62.6-65.1,7.3-6,13-9.4,22.8-7,11.8,2.9,14.2,13.9,30,11,3.7-.7,9.4-3.9,11.7-6.9,9.5-12,5.4-59.3-.9-73.6-16.5-37.8-53.6-38.6-89.2-44.1-16.6,33.1-34.3,66.2-46.9,101.2-16.2,44.9-25.3,92.9-28.6,140.6-1.3,19.2,6.6,53.7-20.8,56.6-20.2,2.2-71.8,2.3-91.8,0-6.3-.7-19.4-8.4-19.4-15.1v-114h-84.6v106.9c0,10.2-9.3,20.7-19.5,22.1-28.2,3.8-64.1-2.6-93.1.1-10.9-1.6-18.1-8.2-19.4-19.4-3.1-27.4,1.7-58.7-1.4-87.5-6.5-59.7-34.7-82.3-57.6-131.7C-22.7,324.3,89,115.5,286.3,96c11.1-1.1,37.4.6,45.6-1.8,2.1-.6,17.6-12.6,22.1-15.2,44.7-25.8,93.8-29.7,141.3-8.5,9.5,4.2,35,22.4,40.8,23.7,11.9,2.7,35.7.2,49.9,1.8,91.4,9.9,172.6,86.3,181.5,179.3Z"/>
+                  <path d="M601.6,272.9c22.8-21.3,52.5,16.3,28.9,33.9-23.2,17.3-48.4-15.8-28.9-33.9Z"/>
+                </svg>
+              </div>
+            </div>
+            <!-- CTA -->
+            <div class="mt-8">
+              <a href="#strategy-call" class="group inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-950 rounded-full overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 font-accent font-bold text-base">
+                Talk to Someone Who'll Tell You the Truth
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: SOCIAL PROOF ===== -->
+    <section class="relative py-20 lg:py-28 bg-white overflow-hidden" id="proof">
+      <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+      <!-- Top double line -->
+      <div class="absolute top-0 left-0 right-0">
+        <div class="w-screen relative left-[calc(-50vw+50%)] flex flex-col gap-[3px]">
+          <div class="h-px bg-neutral-200"></div>
+          <div class="h-px bg-neutral-200"></div>
+        </div>
+      </div>
+
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="text-center mb-14">
+          <span class="inline-block px-3 py-1 rounded bg-accent-50 text-accent-700 text-xs font-bold uppercase tracking-widest border border-accent-100 mb-5">
+            Proven Results
+          </span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-accent font-bold text-neutral-900 tracking-tight mb-4">
+            Don't take our word for it.
+          </h2>
+          <p class="text-neutral-500 text-lg max-w-2xl mx-auto leading-relaxed">
+            From home remodelers to home service brands, our team has driven measurable growth for companies in your industry.
+          </p>
+        </div>
+
+        <!-- Brand logos — glass bar -->
+        <div class="mb-16">
+          <div class="rounded-2xl border border-neutral-200 bg-white/80 backdrop-blur-md px-8 py-6 lg:py-7 shadow-sm">
+            <div class="flex flex-col md:flex-row items-center gap-6 md:gap-0">
+              <span class="text-[11px] text-neutral-400 uppercase tracking-widest font-accent font-bold shrink-0 md:pr-8 md:border-r md:border-neutral-200">
+                Brands we've scaled
+              </span>
+              <div class="flex flex-wrap items-center justify-center md:justify-evenly gap-8 lg:gap-12 w-full md:pl-8">
+                <img src="/images/dreamstyle.png" alt="Dreamstyle Remodeling" class="h-8 lg:h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src="/images/home-depot.png" alt="Home Depot" class="h-9 lg:h-11 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src="/images/3dayblinds.png" alt="3 Day Blinds" class="h-7 lg:h-9 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src="/images/angies-list.svg" alt="Angie's List" class="h-6 lg:h-8 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats — bigger, bolder -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 py-12 border-y border-neutral-200">
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">$2.5B+</div>
+            <div class="text-sm text-neutral-500 mt-2 font-medium">Media Buys Managed</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">5,000+</div>
+            <div class="text-sm text-neutral-500 mt-2 font-medium">Brands Scaled</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">12x</div>
+            <div class="text-sm text-neutral-500 mt-2 font-medium">Average ROAS</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">100+</div>
+            <div class="text-sm text-neutral-500 mt-2 font-medium">Years Combined Experience</div>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="group relative p-8 rounded-3xl border border-neutral-100 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+            <svg class="w-8 h-8 text-neutral-200 mb-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="text-neutral-600 leading-relaxed mb-6">
+              "Simplicity is not a typical ad agency, but a dedicated partner that gets involved with every detail of a campaign to maximize ROI. Their competency in media buying enables us to scale in ways we couldn't before."
+            </p>
+            <div>
+              <div class="font-bold text-neutral-900">Harry Langberg</div>
+              <div class="text-sm text-neutral-500">Managing Partner, Optima Tax Relief</div>
+            </div>
+          </div>
+
+          <div class="group relative p-8 rounded-3xl border border-neutral-100 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+            <svg class="w-8 h-8 text-neutral-200 mb-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="text-neutral-600 leading-relaxed mb-6">
+              "The team at Simplicity improved our lead flow and conversion rate by more than 200% in 30 days. Radio is now our biggest channel, and we are spending more each week."
+            </p>
+            <div>
+              <div class="font-bold text-neutral-900">Zak Bretherton</div>
+              <div class="text-sm text-neutral-500">Head of Growth, Redy</div>
+            </div>
+          </div>
+
+          <div class="group relative p-8 rounded-3xl border border-neutral-100 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+            <svg class="w-8 h-8 text-neutral-200 mb-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="text-neutral-600 leading-relaxed mb-6">
+              "Giving Simplicity more responsibility continues to be a no-brainer. They have helped us grow significantly towards my ever-expanding goal: generating leads within a set budget."
+            </p>
+            <div>
+              <div class="font-bold text-neutral-900">Ralph Giovenco</div>
+              <div class="text-sm text-neutral-500">Director of Advertising, My Computer Career</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom double line -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <div class="w-screen relative left-[calc(-50vw+50%)] flex flex-col gap-[3px]">
+          <div class="h-px bg-neutral-200"></div>
+          <div class="h-px bg-neutral-200"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 7: FINAL CTA ===== -->
+    <section class="relative py-20 lg:py-28 bg-neutral-900 overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-accent-500/[0.06] rounded-full blur-[100px]"></div>
+      </div>
+      <div class="absolute inset-0 opacity-[0.04] grain-overlay pointer-events-none"></div>
+      <!-- Top double line -->
+      <div class="absolute top-0 left-0 right-0">
+        <div class="w-screen relative left-[calc(-50vw+50%)] flex flex-col gap-[3px]">
+          <div class="h-px bg-white/10"></div>
+          <div class="h-px bg-white/10"></div>
+        </div>
+      </div>
+
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-accent font-bold text-white tracking-tight mb-6">
+            Stop wasting budget. Start measuring what matters.
+          </h2>
+          <p class="text-white/60 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+            Join 5,000+ brands who've cut media costs and scaled with confidence. Book your free 15-minute strategy call &mdash; no obligation, no hard sell.
+          </p>
+
+          <!-- What to expect -->
+          <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-10 text-sm text-white/60">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              15-minute call
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              Custom cost analysis
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              Savings identified
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              No hard sell
+            </div>
+          </div>
+
+          <a href="#strategy-call" class="group inline-flex items-center gap-3 px-10 py-5 bg-white text-neutral-950 rounded-full overflow-hidden shadow-xl shadow-white/15 hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300">
+            <span class="relative font-accent font-bold text-lg tracking-wide">Book Your Free Strategy Call</span>
+            <svg class="relative w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-neutral-950 py-12">
+      <div class="max-w-[1400px] mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-4">
+            <img src="/simplicity-logo.png" alt="Simplicity Media" class="h-7 w-auto object-contain brightness-0 invert" />
+            <div class="h-4 w-px bg-white/20"></div>
+            <div class="text-xs text-white/40 font-accent font-bold tracking-wider uppercase">IBS 2026 &bull; Orlando, FL &bull; Feb 17-19</div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-sm text-white/50">
+            <a href="mailto:hello@simplicitymedia.com" class="hover:text-white transition-colors">hello@simplicitymedia.com</a>
+            <a href="tel:+19497490200" class="hover:text-white transition-colors">(949) 749-0200</a>
+            <a href="https://simplicitymedia.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">simplicitymedia.com</a>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+          <p class="text-xs text-white/30">&copy; 2026 Simplicity Media. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ===== STICKY MOBILE CTA ===== -->
+  <div class="fixed bottom-0 inset-x-0 z-50 lg:hidden p-4 bg-gradient-to-t from-neutral-950 via-neutral-950/95 to-transparent" id="mobile-cta">
+    <a href="#strategy-call" class="flex items-center justify-center w-full gap-2 bg-accent-500 hover:bg-accent-600 text-white rounded-full px-6 py-4 font-accent font-bold text-base shadow-xl shadow-accent-500/30 transition-all">
+      Book Your Free Strategy Call
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Form success handling (Formspree redirects by default, but for AJAX)
+    const form = document.getElementById('strategy-form') as HTMLFormElement;
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...';
+        btn.disabled = true;
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            form.innerHTML = `
+              <div class="text-center py-8">
+                <svg class="w-16 h-16 text-success mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-xl font-accent font-bold text-white mb-2">You're in!</h3>
+                <p class="text-white/60 text-sm">We'll reach out within 24 hours to schedule your free strategy call. See you at IBS!</p>
+              </div>
+            `;
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          // Fallback to mailto
+          const formData = new FormData(form);
+          const name = formData.get('name') || '';
+          const email = formData.get('email') || '';
+          const phone = formData.get('phone') || '';
+          const company = formData.get('company') || '';
+          const subject = encodeURIComponent(`IBS 2026 Strategy Call - ${name}`);
+          const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nCompany: ${company || 'N/A'}\nSource: IBS 2026 Landing Page`);
+          window.location.href = `mailto:hello@simplicitymedia.com?subject=${subject}&body=${body}`;
+        }
+      });
+    }
+
+    // Hide mobile CTA when hero form is visible
+    const mobileCta = document.getElementById('mobile-cta');
+    const heroForm = document.getElementById('strategy-call');
+    if (mobileCta && heroForm) {
+      mobileCta.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              mobileCta.style.transform = 'translateY(100%)';
+              mobileCta.style.opacity = '0';
+            } else {
+              mobileCta.style.transform = 'translateY(0)';
+              mobileCta.style.opacity = '1';
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(heroForm);
+    }
+  </script>
+</Layout>

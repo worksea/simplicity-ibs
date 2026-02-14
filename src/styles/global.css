@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+/* ===== Design System Tokens (matched from simplicitymedia.vercel.app) ===== */
+
+@theme {
+  /* Fonts */
+  --font-sans: "Sora", system-ui, -apple-system, sans-serif;
+  --font-accent: "Space Grotesk", system-ui, -apple-system, sans-serif;
+
+  /* Accent Blue */
+  --color-accent-50: #e6f4fc;
+  --color-accent-100: #cce9f9;
+  --color-accent-200: #99d3f3;
+  --color-accent-300: #66bdec;
+  --color-accent-400: #33a7e6;
+  --color-accent-500: #2190DC;
+  --color-accent-600: #1a73b0;
+  --color-accent-700: #145684;
+  --color-accent-800: #0d3a58;
+  --color-accent-900: #071d2c;
+
+  /* Brand Orange */
+  --color-brand-orange-50: #fff7f0;
+  --color-brand-orange-100: #ffead9;
+  --color-brand-orange-200: #ffd4b3;
+  --color-brand-orange-300: #ffbe8d;
+  --color-brand-orange-400: #ffa86d;
+  --color-brand-orange-500: #ff884d;
+  --color-brand-orange-600: #e0673a;
+
+  /* Neutral */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f4f4f5;
+  --color-neutral-200: #e4e4e7;
+  --color-neutral-300: #d4d4d8;
+  --color-neutral-400: #a1a1aa;
+  --color-neutral-500: #71717a;
+  --color-neutral-600: #52525b;
+  --color-neutral-700: #3f3f46;
+  --color-neutral-800: #27272a;
+  --color-neutral-900: #18181b;
+  --color-neutral-950: #09090b;
+
+  /* Pink Elephant */
+  --color-pink-elephant: #e85fa2;
+  --color-pink-elephant-light: #f080b8;
+  --color-pink-elephant-dark: #c0457a;
+
+  /* Pop colors */
+  --color-pop-cyan: #06b6d4;
+  --color-pop-lime: #84cc16;
+  --color-success: #10b981;
+}
+
+/* ===== Base Styles ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Hero Highlight Animation ===== */
+
+.hero-highlight {
+  position: relative;
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background: linear-gradient(
+    to top,
+    transparent 0%,
+    transparent 11%,
+    color-mix(in srgb, var(--color-brand-orange-500) 80%, transparent) 11%,
+    color-mix(in srgb, var(--color-brand-orange-500) 80%, transparent) 38%,
+    transparent 38%
+  );
+  padding: 0 0.08em;
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  animation: highlight-draw 0.6s ease-out 0.8s forwards;
+}
+
+@keyframes highlight-draw {
+  0% { background-size: 0% 100%; }
+  100% { background-size: 100% 100%; }
+}
+
+/* ===== Hero Fade In ===== */
+
+.hero-fade-in {
+  animation: hero-fade-in 1s ease-out;
+}
+
+@keyframes hero-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ===== Stat Fade Up ===== */
+
+.stat-fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: stat-fade-up 0.5s ease-out forwards;
+}
+
+@keyframes stat-fade-up {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Connector Particles ===== */
+
+.connector-particle {
+  animation: data-flow 2.5s linear infinite;
+}
+
+.connector-particle-2 {
+  animation-delay: 0.4s;
+}
+
+.connector-particle-3 {
+  animation-delay: 0.8s;
+}
+
+@keyframes data-flow {
+  0% { stroke-dashoffset: 48; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ===== Blueprint Grid ===== */
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 0.5px, transparent 0.5px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0.5px, transparent 0.5px);
+  background-size: 60px 60px;
+}
+
+/* ===== Grain Overlay ===== */
+
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ===== Testimonial Glow ===== */
+
+.testimonial-glow {
+  background:
+    radial-gradient(ellipse 500px 350px at 20% 40%, rgba(255,255,255,0.15), transparent),
+    radial-gradient(ellipse 400px 300px at 80% 60%, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 200%;
+  animation: testimonial-drift 6s ease-in-out infinite alternate;
+}
+
+@keyframes testimonial-drift {
+  0% { background-position: 0% 0%; }
+  33% { background-position: 50% 100%; }
+  66% { background-position: 100% 50%; }
+  100% { background-position: 0% 100%; }
+}
+
+/* ===== Reduced Motion ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-in { animation: none; }
+  .hero-highlight { animation: none; background-size: 100% 100%; }
+  .stat-fade-up { animation: none; opacity: 1; transform: none; }
+  .connector-particle { animation: none; }
+  .testimonial-glow { animation: none; }
+}
