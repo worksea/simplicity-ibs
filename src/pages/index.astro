@@ -734,13 +734,19 @@ import Layout from '../layouts/Layout.astro';
       mobileCta.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
       let ctaVisible = false;
 
+      function hideCta() {
+        ctaVisible = false;
+        mobileCta.style.opacity = '0';
+        mobileCta.style.top = 'auto';
+        mobileCta.style.bottom = '0';
+        mobileCta.style.transform = 'translateY(100%)';
+      }
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              ctaVisible = false;
-              mobileCta.style.opacity = '0';
-              mobileCta.style.transform = 'translateY(100%)';
+              hideCta();
             } else {
               const formTop = entry.boundingClientRect.top;
               if (formTop < 0) {
@@ -748,9 +754,7 @@ import Layout from '../layouts/Layout.astro';
                 mobileCta.style.opacity = '1';
                 positionCta();
               } else {
-                ctaVisible = false;
-                mobileCta.style.opacity = '0';
-                mobileCta.style.transform = 'translateY(100%)';
+                hideCta();
               }
             }
           });
@@ -762,20 +766,24 @@ import Layout from '../layouts/Layout.astro';
       // Pin CTA to the true visual bottom on iOS (handles Chrome toolbar show/hide)
       // #region agent log
       const dbg = document.createElement('div');
-      dbg.style.cssText = 'position:fixed;top:40px;left:4px;z-index:9999;font:10px monospace;color:lime;background:rgba(0,0,0,0.7);padding:4px 6px;border-radius:4px;pointer-events:none;';
+      dbg.style.cssText = 'position:fixed;top:40px;left:4px;z-index:9999;font:10px monospace;color:lime;background:rgba(0,0,0,0.7);padding:4px 6px;border-radius:4px;pointer-events:none;white-space:pre;';
       document.body.appendChild(dbg);
       // #endregion
 
       function positionCta() {
-        if (!ctaVisible) return;
+        if (!ctaVisible) {
+          mobileCta.style.transform = 'translateY(100%)';
+          return;
+        }
         if (window.visualViewport) {
           const vv = window.visualViewport;
-          const layoutH = document.documentElement.clientHeight;
-          const visualBottom = vv.offsetTop + vv.height;
-          const diff = visualBottom - layoutH;
-          mobileCta.style.transform = `translateY(${diff}px)`;
+          const ctaH = mobileCta.offsetHeight;
+          const top = vv.offsetTop + vv.height - ctaH;
+          mobileCta.style.bottom = 'auto';
+          mobileCta.style.top = `${top}px`;
+          mobileCta.style.transform = 'translateY(0)';
           // #region agent log
-          dbg.textContent = `vvH:${Math.round(vv.height)} lH:${layoutH} off:${Math.round(vv.offsetTop)} diff:${Math.round(diff)}`;
+          dbg.textContent = `vvH:${Math.round(vv.height)} ctaH:${ctaH}\noff:${Math.round(vv.offsetTop)} top:${Math.round(top)}`;
           // #endregion
         } else {
           mobileCta.style.transform = 'translateY(0)';
