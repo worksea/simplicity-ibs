@@ -731,7 +731,7 @@ import Layout from '../layouts/Layout.astro';
     const mobileCta = document.getElementById('mobile-cta');
     const heroForm = document.getElementById('strategy-call');
     if (mobileCta && heroForm) {
-      mobileCta.style.transition = 'transform 0.3s ease, opacity 0.3s ease, bottom 0.2s ease';
+      mobileCta.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -755,17 +755,6 @@ import Layout from '../layouts/Layout.astro';
       observer.observe(heroForm);
     }
 
-    // Keep mobile CTA at visual bottom when browser chrome shows/hides (e.g. iOS)
-    const mobileCtaBar = document.getElementById('mobile-cta');
-    if (mobileCtaBar && window.visualViewport) {
-      const setCtaBottom = () => {
-        const offset = window.visualViewport.height - document.documentElement.clientHeight;
-        mobileCtaBar.style.bottom = `${Math.max(0, offset)}px`;
-      };
-      window.visualViewport.addEventListener('resize', setCtaBottom);
-      window.visualViewport.addEventListener('scroll', setCtaBottom);
-      setCtaBottom();
-    }
 
     // Stat scroll-reveal: animate stats when they enter the viewport
     document.querySelectorAll('.stat-reveal').forEach((el) => {
