@@ -732,20 +732,25 @@ import Layout from '../layouts/Layout.astro';
     const heroForm = document.getElementById('strategy-call');
     if (mobileCta && heroForm) {
       mobileCta.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+      let ctaVisible = false;
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              mobileCta.style.transform = 'translateY(100%)';
+              ctaVisible = false;
               mobileCta.style.opacity = '0';
+              mobileCta.style.transform = 'translateY(100%)';
             } else {
               const formTop = entry.boundingClientRect.top;
               if (formTop < 0) {
-                mobileCta.style.transform = 'translateY(0)';
+                ctaVisible = true;
                 mobileCta.style.opacity = '1';
+                positionCta();
               } else {
-                mobileCta.style.transform = 'translateY(100%)';
+                ctaVisible = false;
                 mobileCta.style.opacity = '0';
+                mobileCta.style.transform = 'translateY(100%)';
               }
             }
           });
@@ -753,6 +758,34 @@ import Layout from '../layouts/Layout.astro';
         { threshold: 0.1 }
       );
       observer.observe(heroForm);
+
+      // Pin CTA to the true visual bottom on iOS (handles Chrome toolbar show/hide)
+      // #region agent log
+      const dbg = document.createElement('div');
+      dbg.style.cssText = 'position:fixed;top:40px;left:4px;z-index:9999;font:10px monospace;color:lime;background:rgba(0,0,0,0.7);padding:4px 6px;border-radius:4px;pointer-events:none;';
+      document.body.appendChild(dbg);
+      // #endregion
+
+      function positionCta() {
+        if (!ctaVisible) return;
+        if (window.visualViewport) {
+          const vv = window.visualViewport;
+          const layoutH = document.documentElement.clientHeight;
+          const visualBottom = vv.offsetTop + vv.height;
+          const diff = visualBottom - layoutH;
+          mobileCta.style.transform = `translateY(${diff}px)`;
+          // #region agent log
+          dbg.textContent = `vvH:${Math.round(vv.height)} lH:${layoutH} off:${Math.round(vv.offsetTop)} diff:${Math.round(diff)}`;
+          // #endregion
+        } else {
+          mobileCta.style.transform = 'translateY(0)';
+        }
+      }
+
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', positionCta);
+        window.visualViewport.addEventListener('scroll', positionCta);
+      }
     }
 
 
