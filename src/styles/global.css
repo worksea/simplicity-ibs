@@ -58,6 +58,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Safe area bottom (iOS notch/home indicator); constant() for older iOS */
+.pb-safe {
+  padding-bottom: max(1rem, constant(safe-area-inset-bottom), env(safe-area-inset-bottom));
+}
+
 body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
