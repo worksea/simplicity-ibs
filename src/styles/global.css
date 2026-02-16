@@ -114,6 +114,24 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== Stat scroll-reveal (for below-the-fold stats) ===== */
+
+.stat-reveal .stat-in-view {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stat-reveal.is-visible .stat-in-view {
+  animation: stat-fade-up 0.6s ease-out forwards;
+}
+
+.stat-reveal.is-visible .stat-in-view.stagger-0 { animation-delay: 0s; }
+.stat-reveal.is-visible .stat-in-view.stagger-1 { animation-delay: 0.1s; }
+.stat-reveal.is-visible .stat-in-view.stagger-2 { animation-delay: 0.2s; }
+.stat-reveal.is-visible .stat-in-view.stagger-3 { animation-delay: 0.15s; }
+.stat-reveal.is-visible .stat-in-view.stagger-4 { animation-delay: 0.25s; }
+.stat-reveal.is-visible .stat-in-view.stagger-5 { animation-delay: 0.3s; }
+
 /* ===== Connector Particles ===== */
 
 .connector-particle {
@@ -171,6 +189,8 @@ body {
   .hero-fade-in { animation: none; }
   .hero-highlight { animation: none; background-size: 100% 100%; }
   .stat-fade-up { animation: none; opacity: 1; transform: none; }
+  .stat-reveal .stat-in-view,
+  .stat-reveal.is-visible .stat-in-view { animation: none; opacity: 1; transform: none; }
   .connector-particle { animation: none; }
   .testimonial-glow { animation: none; }
 }

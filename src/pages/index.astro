@@ -4,21 +4,21 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
   <!-- ===== STICKY HEADER (Minimal — squeeze page) ===== -->
-  <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-neutral-200/50" id="site-header">
-    <div class="max-w-[1400px] mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+  <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-neutral-200/50 pt-[env(safe-area-inset-top)]" id="site-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 group">
+      <a href="/" class="flex items-center gap-2 group min-h-[44px] min-w-[44px]">
         <img src="/simplicity-logo.png" alt="Simplicity Media" class="h-10 md:h-14 w-auto object-contain" />
       </a>
       <!-- CTA -->
-      <a href="#strategy-call" class="group inline-flex items-center justify-center bg-neutral-900 text-white text-sm md:text-base font-accent font-bold px-5 md:px-8 py-2.5 md:py-3.5 rounded-full hover:bg-neutral-800 hover:-translate-y-0.5 transition-all shadow-lg shadow-neutral-900/20">
+      <a href="#strategy-call" class="group hidden lg:inline-flex items-center justify-center bg-neutral-900 text-white text-sm md:text-base font-accent font-bold px-5 md:px-8 py-2.5 md:py-3.5 rounded-full hover:bg-neutral-800 hover:-translate-y-0.5 transition-all shadow-lg shadow-neutral-900/20">
         Book a Strategy Call
         <svg class="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
       </a>
     </div>
   </header>
 
-  <main class="flex-1">
+  <main class="flex-1 overflow-x-hidden">
     <!-- ===== SECTION 1: HERO (Split — Copy Left, Form Right) ===== -->
     <section class="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-neutral-900 hero-fade-in" id="hero">
       <!-- Video Background -->
@@ -28,7 +28,7 @@ import Layout from '../layouts/Layout.astro';
       <!-- Dark gradient from bottom up -->
       <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-neutral-950/30"></div>
 
-      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10 pt-24 pb-8 md:pt-32 md:pb-12 lg:pt-36 lg:pb-16">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10 pt-[calc(7rem+env(safe-area-inset-top))] pb-16 md:pt-40 md:pb-20 lg:pt-44 lg:pb-24">
         <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
           <!-- Left: Copy -->
           <div>
@@ -48,35 +48,35 @@ import Layout from '../layouts/Layout.astro';
               We help builders, remodelers, and home service brands generate real customers using radio, TV, and CTV at <strong class="text-white">50-80% less</strong> than what you're paying now.
             </p>
 
-            <!-- Quick stats -->
+            <!-- Quick stats (count-up when visible) -->
             <div class="flex flex-wrap gap-5 sm:gap-8 lg:gap-10 mb-8">
               <div class="stat-fade-up" style="animation-delay: 0.1s;">
-                <div class="text-2xl sm:text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight">$2.5B+</div>
+                <div class="hero-stat-value text-2xl sm:text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight" data-count-prefix="$" data-count-end="2.5" data-count-decimals="1" data-count-suffix="B+">$0.0B+</div>
                 <div class="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider mt-1">Media Managed</div>
               </div>
               <div class="stat-fade-up" style="animation-delay: 0.2s;">
-                <div class="text-2xl sm:text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight">5,000+</div>
+                <div class="hero-stat-value text-2xl sm:text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight" data-count-end="5000" data-count-suffix="+" data-count-commas>0+</div>
                 <div class="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider mt-1">Brands Scaled</div>
               </div>
               <div class="stat-fade-up" style="animation-delay: 0.3s;">
-                <div class="text-2xl sm:text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight">50-80%</div>
+                <div class="hero-stat-value text-2xl sm:text-3xl lg:text-4xl font-accent font-bold text-white tracking-tight" data-count-from="50" data-count-end="80" data-count-suffix="%" data-count-range>50-50%</div>
                 <div class="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider mt-1">Cost Savings</div>
               </div>
             </div>
 
-            <!-- Glass logo card (under left content) -->
-            <div class="rounded-xl border border-white/[0.08] bg-white/[0.07] backdrop-blur-md px-4 sm:px-5 py-3 sm:py-3.5 inline-flex items-center gap-3 sm:gap-4 flex-wrap">
-              <span class="text-[10px] text-white/30 uppercase tracking-widest font-accent font-bold">Trusted by</span>
-              <img src="/images/dreamstyle.png" alt="Dreamstyle Remodeling" class="h-6 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/images/home-depot.png" alt="Home Depot" class="h-7 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/images/3dayblinds.png" alt="3 Day Blinds" class="h-5 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/images/angies-list.svg" alt="Angie's List" class="h-5 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+            <!-- Logo bar (white bg for readability on dark hero) -->
+            <div class="rounded-xl border border-neutral-200 bg-white shadow-lg px-4 sm:px-5 py-3 sm:py-3.5 inline-flex items-center gap-3 sm:gap-4 flex-wrap">
+              <span class="text-[10px] text-neutral-500 uppercase tracking-widest font-accent font-bold">Trusted by</span>
+              <img src="/images/dreamstyle.png" alt="Dreamstyle Remodeling" class="h-6 w-auto object-contain transition-opacity duration-300" />
+              <img src="/images/home-depot.png" alt="Home Depot" class="h-7 w-auto object-contain transition-opacity duration-300" />
+              <img src="/images/3dayblinds.png" alt="3 Day Blinds" class="h-5 w-auto object-contain transition-opacity duration-300" />
+              <img src="/images/angies-list.svg" alt="Angie's List" class="h-5 w-auto object-contain transition-opacity duration-300" />
             </div>
           </div>
 
           <!-- Right: Form -->
-          <div id="strategy-call" class="scroll-mt-28">
-            <div class="rounded-2xl border border-white/20 bg-white/[0.05] backdrop-blur-sm p-7 lg:p-9 shadow-2xl shadow-black/20">
+          <div id="strategy-call" class="scroll-mt-32 md:scroll-mt-28">
+            <div class="rounded-2xl border border-white/40 bg-white/[0.12] backdrop-blur-md p-7 lg:p-9 shadow-2xl shadow-black/40 ring-1 ring-white/20">
               <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 rounded-xl bg-accent-500/20 flex items-center justify-center">
                   <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -97,21 +97,21 @@ import Layout from '../layouts/Layout.astro';
                 <input type="hidden" name="_source" value="ibs26.simplicitymedia.com" />
                 <div>
                   <input type="text" name="name" required placeholder="Full Name *"
-                    class="w-full bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 px-4 py-3 text-sm focus:outline-none focus:border-accent-400 focus:ring-1 focus:ring-accent-400 transition-colors" />
+                    class="w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
                 </div>
                 <div>
                   <input type="email" name="email" required placeholder="Work Email *"
-                    class="w-full bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 px-4 py-3 text-sm focus:outline-none focus:border-accent-400 focus:ring-1 focus:ring-accent-400 transition-colors" />
+                    class="w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <input type="tel" name="phone" placeholder="Phone"
-                    class="w-full bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 px-4 py-3 text-sm focus:outline-none focus:border-accent-400 focus:ring-1 focus:ring-accent-400 transition-colors" />
+                    class="w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
                   <input type="text" name="company" placeholder="Company"
-                    class="w-full bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 px-4 py-3 text-sm focus:outline-none focus:border-accent-400 focus:ring-1 focus:ring-accent-400 transition-colors" />
+                    class="w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
                 </div>
 
                 <button type="submit"
-                  class="group w-full inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white rounded-full px-6 py-3.5 font-accent font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-accent-500/25 hover:shadow-xl hover:shadow-accent-500/30">
+                  class="group w-full inline-flex items-center justify-center gap-2 min-h-[44px] bg-accent-500 hover:bg-accent-600 text-white rounded-full px-6 py-3.5 font-accent font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-accent-500/25 hover:shadow-xl hover:shadow-accent-500/30">
                   Get My Free Strategy Session
                   <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -144,10 +144,10 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="stat-reveal grid md:grid-cols-3 gap-8">
           <!-- Stat Card 1 -->
           <div class="group relative p-8 lg:p-10 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 text-center">
-            <div class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">98%</div>
+            <div class="stat-in-view stagger-0 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">98%</div>
             <h3 class="text-xl font-bold text-neutral-900 mb-2">Invisible Visitors</h3>
             <p class="text-neutral-500 leading-relaxed">
               of your website visitors research anonymously and leave without a trace. Your CRM never sees them.
@@ -155,7 +155,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <!-- Stat Card 2 -->
           <div class="group relative p-8 lg:p-10 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 text-center">
-            <div class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">$63B</div>
+            <div class="stat-in-view stagger-1 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">$63B</div>
             <h3 class="text-xl font-bold text-neutral-900 mb-2">Lost to Ad Waste</h3>
             <p class="text-neutral-500 leading-relaxed">
               lost to invalid traffic and wasted ad spend annually. Builders pay for impressions that never reach real homeowners.
@@ -163,7 +163,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <!-- Stat Card 3 -->
           <div class="group relative p-8 lg:p-10 rounded-3xl border border-neutral-100 hover:border-neutral-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 text-center">
-            <div class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">40%</div>
+            <div class="stat-in-view stagger-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-accent font-bold text-accent-600 mb-4 tracking-tighter">40%</div>
             <h3 class="text-xl font-bold text-neutral-900 mb-2">CTV Spend Wasted</h3>
             <p class="text-neutral-500 leading-relaxed">
               of open programmatic CTV spending is wasted due to inaccurate data. That's $7.4 billion in lost value this year.
@@ -413,7 +413,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <!-- CTA -->
             <div class="mt-8">
-              <a href="#strategy-call" class="group inline-flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-white text-neutral-950 rounded-full overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 font-accent font-bold text-sm md:text-base">
+              <a href="#strategy-call" class="group inline-flex items-center justify-center gap-3 px-6 py-3 md:px-8 md:py-4 min-h-[44px] bg-white text-neutral-950 rounded-full overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 font-accent font-bold text-sm md:text-base text-center">
                 Talk to Someone Who'll Tell You the Truth
                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -467,21 +467,21 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Stats — bigger, bolder -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 py-12 border-y border-neutral-200">
+        <div class="stat-reveal grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16 py-12 border-y border-neutral-200">
           <div class="text-center">
-            <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">$2.5B+</div>
+            <div class="stat-in-view stagger-0 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">$2.5B+</div>
             <div class="text-xs sm:text-sm text-neutral-500 mt-2 font-medium">Media Buys Managed</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">5,000+</div>
+            <div class="stat-in-view stagger-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">5,000+</div>
             <div class="text-xs sm:text-sm text-neutral-500 mt-2 font-medium">Brands Scaled</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">12x</div>
+            <div class="stat-in-view stagger-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">12x</div>
             <div class="text-xs sm:text-sm text-neutral-500 mt-2 font-medium">Average ROAS</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">100+</div>
+            <div class="stat-in-view stagger-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-accent font-bold text-neutral-900 tracking-tighter">100+</div>
             <div class="text-xs sm:text-sm text-neutral-500 mt-2 font-medium">Years Combined Experience</div>
           </div>
         </div>
@@ -581,7 +581,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
 
-          <a href="#strategy-call" class="group inline-flex items-center gap-3 px-8 py-4 md:px-10 md:py-5 bg-white text-neutral-950 rounded-full overflow-hidden shadow-xl shadow-white/15 hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300">
+          <a href="#strategy-call" class="group inline-flex items-center justify-center gap-3 px-8 py-4 md:px-10 md:py-5 min-h-[44px] bg-white text-neutral-950 rounded-full overflow-hidden shadow-xl shadow-white/15 hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 text-center">
             <span class="relative font-accent font-bold text-base md:text-lg tracking-wide">Book Your Free Strategy Call</span>
             <svg class="relative w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -601,9 +601,9 @@ import Layout from '../layouts/Layout.astro';
             <div class="text-xs text-white/40 font-accent font-bold tracking-wider uppercase">IBS 2026 &bull; Orlando, FL &bull; Feb 17-19</div>
           </div>
           <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-sm text-white/50">
-            <a href="mailto:hello@simplicitymedia.com" class="hover:text-white transition-colors">hello@simplicitymedia.com</a>
-            <a href="tel:+19497490200" class="hover:text-white transition-colors">(949) 749-0200</a>
-            <a href="https://simplicitymedia.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">simplicitymedia.com</a>
+            <a href="mailto:hello@simplicitymedia.com" class="hover:text-white transition-colors py-2 -my-2 min-h-[44px] flex items-center justify-center md:justify-start">hello@simplicitymedia.com</a>
+            <a href="tel:+19497490200" class="hover:text-white transition-colors py-2 -my-2 min-h-[44px] flex items-center justify-center md:justify-start">(949) 749-0200</a>
+            <a href="https://simplicitymedia.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors py-2 -my-2 min-h-[44px] flex items-center justify-center md:justify-start">simplicitymedia.com</a>
           </div>
         </div>
         <div class="mt-8 pt-6 border-t border-white/10 text-center">
@@ -615,7 +615,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ===== STICKY MOBILE CTA ===== -->
   <div class="fixed bottom-0 inset-x-0 z-50 lg:hidden p-4 pb-[max(1rem,env(safe-area-inset-bottom))] bg-gradient-to-t from-neutral-950 via-neutral-950/95 to-transparent" id="mobile-cta">
-    <a href="#strategy-call" class="flex items-center justify-center w-full gap-2 bg-accent-500 hover:bg-accent-600 text-white rounded-full px-6 py-4 font-accent font-bold text-base shadow-xl shadow-accent-500/30 transition-all">
+    <a href="#strategy-call" class="flex items-center justify-center w-full gap-2 min-h-[44px] bg-accent-500 hover:bg-accent-600 text-white rounded-full px-6 py-4 font-accent font-bold text-base shadow-xl shadow-accent-500/30 transition-all">
       Book Your Free Strategy Call
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -671,6 +671,62 @@ import Layout from '../layouts/Layout.astro';
       });
     }
 
+    // Hero stats count-up (runs after stat-fade-up)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      const heroStatValues = document.querySelectorAll<HTMLElement>('.hero-stat-value');
+      const duration = 1200;
+      const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
+      const runCountUp = (el: HTMLElement, startTime: number) => {
+        const prefix = el.dataset.countPrefix ?? '';
+        const suffix = el.dataset.countSuffix ?? '';
+        const decimals = el.hasAttribute('data-count-decimals') ? parseInt(el.dataset.countDecimals ?? '1', 10) : 0;
+        const useCommas = el.hasAttribute('data-count-commas');
+        const isRange = el.hasAttribute('data-count-range');
+        const from = isRange ? parseFloat(el.dataset.countFrom ?? '0') : 0;
+        const end = parseFloat(el.dataset.countEnd ?? '0');
+
+        const tick = (now: number) => {
+          const elapsed = now - startTime;
+          const p = Math.min(elapsed / duration, 1);
+          const t = easeOutCubic(p);
+          let value: number;
+          if (isRange) value = from + (end - from) * t;
+          else value = end * t;
+          let text: string;
+          if (isRange) text = `${Math.round(from)}-${Math.round(value)}${suffix}`;
+          else if (useCommas) text = `${prefix}${Math.round(value).toLocaleString()}${suffix}`;
+          else text = `${prefix}${value.toFixed(decimals)}${suffix}`;
+          el.textContent = text;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+
+      setTimeout(() => {
+        heroStatValues.forEach((el, i) => {
+          const startDelay = 80 * i;
+          const startTime = performance.now() + startDelay;
+          setTimeout(() => runCountUp(el, performance.now()), startDelay);
+        });
+      }, 500);
+    } else {
+      // Reduced motion: show final values immediately
+      document.querySelectorAll<HTMLElement>('.hero-stat-value').forEach((el) => {
+        const prefix = el.dataset.countPrefix ?? '';
+        const suffix = el.dataset.countSuffix ?? '';
+        const decimals = el.hasAttribute('data-count-decimals') ? parseInt(el.dataset.countDecimals ?? '1', 10) : 0;
+        const useCommas = el.hasAttribute('data-count-commas');
+        const isRange = el.hasAttribute('data-count-range');
+        const from = isRange ? parseFloat(el.dataset.countFrom ?? '0') : 0;
+        const end = parseFloat(el.dataset.countEnd ?? '0');
+        if (isRange) el.textContent = `${Math.round(from)}-${Math.round(end)}${suffix}`;
+        else if (useCommas) el.textContent = `${prefix}${Math.round(end).toLocaleString()}${suffix}`;
+        else el.textContent = `${prefix}${end.toFixed(decimals)}${suffix}`;
+      });
+    }
+
     // Hide mobile CTA when hero form is visible
     const mobileCta = document.getElementById('mobile-cta');
     const heroForm = document.getElementById('strategy-call');
@@ -692,5 +748,18 @@ import Layout from '../layouts/Layout.astro';
       );
       observer.observe(heroForm);
     }
+
+    // Stat scroll-reveal: animate stats when they enter the viewport
+    document.querySelectorAll('.stat-reveal').forEach((el) => {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -20px 0px' }
+      );
+      obs.observe(el);
+    });
   </script>
 </Layout>
