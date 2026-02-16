@@ -764,12 +764,6 @@ import Layout from '../layouts/Layout.astro';
       observer.observe(heroForm);
 
       // Pin CTA to the true visual bottom on iOS (handles Chrome toolbar show/hide)
-      // #region agent log
-      const dbg = document.createElement('div');
-      dbg.style.cssText = 'position:fixed;top:40px;left:4px;z-index:9999;font:10px monospace;color:lime;background:rgba(0,0,0,0.7);padding:4px 6px;border-radius:4px;pointer-events:none;white-space:pre;';
-      document.body.appendChild(dbg);
-      // #endregion
-
       function positionCta() {
         if (!ctaVisible) {
           mobileCta.style.transform = 'translateY(100%)';
@@ -782,9 +776,6 @@ import Layout from '../layouts/Layout.astro';
           mobileCta.style.bottom = 'auto';
           mobileCta.style.top = `${top}px`;
           mobileCta.style.transform = 'translateY(0)';
-          // #region agent log
-          dbg.textContent = `vvH:${Math.round(vv.height)} ctaH:${ctaH}\noff:${Math.round(vv.offsetTop)} top:${Math.round(top)}`;
-          // #endregion
         } else {
           mobileCta.style.transform = 'translateY(0)';
         }
