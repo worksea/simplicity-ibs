@@ -107,8 +107,12 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <input type="tel" name="phone" placeholder="Phone" autocomplete="tel"
-                      class="form-input w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
+                    <div class="flex items-center w-full bg-white/15 border border-white/40 rounded-xl hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] focus-within:border-accent-400 focus-within:ring-2 focus-within:ring-accent-400/50" id="phone-wrapper">
+                      <span class="text-white/55 text-base pl-4 pr-2 border-r border-white/20 select-none shrink-0">+1</span>
+                      <input type="tel" id="phone-display" placeholder="XXX-XXX-XXXX" maxlength="12" autocomplete="tel-national"
+                        class="form-input w-full bg-transparent text-white placeholder:text-white/55 px-3 py-3.5 text-base focus:outline-none" />
+                    </div>
+                    <input type="hidden" name="phone" id="phone-hidden" />
                     <p class="form-error hidden text-red-400 text-xs mt-1.5 ml-1"></p>
                   </div>
                   <input type="text" name="company" placeholder="Company" autocomplete="organization"
@@ -637,32 +641,52 @@ import Layout from '../layouts/Layout.astro';
       document.addEventListener('touchstart', () => { heroVideo.play().catch(() => {}); }, { once: true });
     }
 
+    // Phone auto-format: +1 XXX-XXX-XXXX
+    const phoneDisplay = document.getElementById('phone-display') as HTMLInputElement;
+    const phoneHidden = document.getElementById('phone-hidden') as HTMLInputElement;
+    const phoneWrapper = document.getElementById('phone-wrapper') as HTMLElement;
+    if (phoneDisplay && phoneHidden) {
+      phoneDisplay.addEventListener('input', () => {
+        const digits = phoneDisplay.value.replace(/\D/g, '').slice(0, 10);
+        let formatted = '';
+        if (digits.length > 0) formatted = digits.slice(0, 3);
+        if (digits.length > 3) formatted += '-' + digits.slice(3, 6);
+        if (digits.length > 6) formatted += '-' + digits.slice(6, 10);
+        phoneDisplay.value = formatted;
+        phoneHidden.value = digits ? `+1${digits}` : '';
+      });
+    }
+
     // Form validation + submission
     const form = document.getElementById('strategy-form') as HTMLFormElement;
     if (form) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,4}$/;
 
       function showError(input: HTMLInputElement, msg: string) {
-        const err = input.closest('div')?.querySelector('.form-error') as HTMLElement | null;
+        const errContainer = input.id === 'phone-display' ? phoneWrapper?.closest('div')?.parentElement : input.closest('div');
+        const err = errContainer?.querySelector('.form-error') as HTMLElement | null;
         if (err) { err.textContent = msg; err.classList.remove('hidden'); }
-        input.classList.add('!border-red-400/70');
-        input.classList.remove('!border-green-400/50');
+        const borderEl = input.id === 'phone-display' ? phoneWrapper : input;
+        if (borderEl) { borderEl.classList.add('!border-red-400/70'); borderEl.classList.remove('!border-green-400/50'); }
       }
 
       function clearError(input: HTMLInputElement) {
-        const err = input.closest('div')?.querySelector('.form-error') as HTMLElement | null;
+        const errContainer = input.id === 'phone-display' ? phoneWrapper?.closest('div')?.parentElement : input.closest('div');
+        const err = errContainer?.querySelector('.form-error') as HTMLElement | null;
         if (err) { err.textContent = ''; err.classList.add('hidden'); }
-        input.classList.remove('!border-red-400/70');
+        const borderEl = input.id === 'phone-display' ? phoneWrapper : input;
+        if (borderEl) { borderEl.classList.remove('!border-red-400/70'); }
       }
 
       function markValid(input: HTMLInputElement) {
         clearError(input);
-        if (input.value.trim()) input.classList.add('!border-green-400/50');
+        const borderEl = input.id === 'phone-display' ? phoneWrapper : input;
+        if (input.value.trim() && borderEl) borderEl.classList.add('!border-green-400/50');
       }
 
       function validateField(input: HTMLInputElement): boolean {
         const val = input.value.trim();
-        const name = input.name;
+        const name = input.name || input.id;
 
         if (name === 'name') {
           if (!val) { showError(input, 'Name is required'); return false; }
@@ -677,10 +701,9 @@ import Layout from '../layouts/Layout.astro';
           markValid(input); return true;
         }
 
-        if (name === 'phone' && val) {
+        if (name === 'phone-display' && val) {
           const digits = val.replace(/\D/g, '');
-          if (digits.length < 10) { showError(input, 'Please enter a valid phone number (10+ digits)'); return false; }
-          if (digits.length > 15) { showError(input, 'Phone number is too long'); return false; }
+          if (digits.length < 10) { showError(input, 'Please enter all 10 digits'); return false; }
           markValid(input); return true;
         }
 
@@ -691,7 +714,7 @@ import Layout from '../layouts/Layout.astro';
       form.querySelectorAll<HTMLInputElement>('.form-input').forEach((input) => {
         input.addEventListener('blur', () => validateField(input));
         input.addEventListener('input', () => {
-          if (input.classList.contains('!border-red-400/70')) validateField(input);
+          if ((input.id === 'phone-display' ? phoneWrapper : input)?.classList.contains('!border-red-400/70')) validateField(input);
         });
       });
 
