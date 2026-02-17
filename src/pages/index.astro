@@ -625,6 +625,13 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ===== SCRIPTS ===== -->
   <script>
+    // Ensure hero video autoplays on mobile
+    const heroVideo = document.querySelector('#hero video') as HTMLVideoElement;
+    if (heroVideo) {
+      heroVideo.play().catch(() => {});
+      document.addEventListener('touchstart', () => { heroVideo.play().catch(() => {}); }, { once: true });
+    }
+
     // Form success handling (Formspree redirects by default, but for AJAX)
     const form = document.getElementById('strategy-form') as HTMLFormElement;
     if (form) {
