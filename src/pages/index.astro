@@ -92,22 +92,27 @@ import Layout from '../layouts/Layout.astro';
                 See how builders like you are cutting media costs by 50-80% and getting more calls from homeowners ready to buy.
               </p>
 
-              <form action="https://formspree.io/f/mvzbapjw" method="POST" id="strategy-form" class="space-y-4">
+              <form action="https://formspree.io/f/mvzbapjw" method="POST" id="strategy-form" class="space-y-4" novalidate>
                 <input type="hidden" name="_subject" value="IBS 2026 Strategy Call Request" />
                 <input type="hidden" name="_source" value="ibs26.simplicitymedia.com" />
                 <div>
-                  <input type="text" name="name" required placeholder="Full Name *"
-                    class="w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
+                  <input type="text" name="name" required placeholder="Full Name *" autocomplete="name"
+                    class="form-input w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
+                  <p class="form-error hidden text-red-400 text-xs mt-1.5 ml-1"></p>
                 </div>
                 <div>
-                  <input type="email" name="email" required placeholder="Work Email *"
-                    class="w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
+                  <input type="email" name="email" required placeholder="Email *" autocomplete="email"
+                    class="form-input w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
+                  <p class="form-error hidden text-red-400 text-xs mt-1.5 ml-1"></p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input type="tel" name="phone" placeholder="Phone"
-                    class="w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
-                  <input type="text" name="company" placeholder="Company"
-                    class="w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
+                  <div>
+                    <input type="tel" name="phone" placeholder="Phone" autocomplete="tel"
+                      class="form-input w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
+                    <p class="form-error hidden text-red-400 text-xs mt-1.5 ml-1"></p>
+                  </div>
+                  <input type="text" name="company" placeholder="Company" autocomplete="organization"
+                    class="form-input w-full bg-white/15 border border-white/40 rounded-xl text-white placeholder:text-white/55 px-4 py-3.5 text-base focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/50 hover:bg-white/20 hover:border-white/50 transition-all duration-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]" />
                 </div>
 
                 <button type="submit"
@@ -632,11 +637,83 @@ import Layout from '../layouts/Layout.astro';
       document.addEventListener('touchstart', () => { heroVideo.play().catch(() => {}); }, { once: true });
     }
 
-    // Form success handling (Formspree redirects by default, but for AJAX)
+    // Form validation + submission
     const form = document.getElementById('strategy-form') as HTMLFormElement;
     if (form) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+      function showError(input: HTMLInputElement, msg: string) {
+        const err = input.closest('div')?.querySelector('.form-error') as HTMLElement | null;
+        if (err) { err.textContent = msg; err.classList.remove('hidden'); }
+        input.classList.add('!border-red-400/70');
+        input.classList.remove('!border-green-400/50');
+      }
+
+      function clearError(input: HTMLInputElement) {
+        const err = input.closest('div')?.querySelector('.form-error') as HTMLElement | null;
+        if (err) { err.textContent = ''; err.classList.add('hidden'); }
+        input.classList.remove('!border-red-400/70');
+      }
+
+      function markValid(input: HTMLInputElement) {
+        clearError(input);
+        if (input.value.trim()) input.classList.add('!border-green-400/50');
+      }
+
+      function validateField(input: HTMLInputElement): boolean {
+        const val = input.value.trim();
+        const name = input.name;
+
+        if (name === 'name') {
+          if (!val) { showError(input, 'Name is required'); return false; }
+          if (val.length < 2) { showError(input, 'Please enter your full name'); return false; }
+          if (/\d/.test(val)) { showError(input, 'Name should not contain numbers'); return false; }
+          markValid(input); return true;
+        }
+
+        if (name === 'email') {
+          if (!val) { showError(input, 'Email is required'); return false; }
+          if (!emailRegex.test(val)) { showError(input, 'Please enter a valid email address'); return false; }
+          markValid(input); return true;
+        }
+
+        if (name === 'phone' && val) {
+          const digits = val.replace(/\D/g, '');
+          if (digits.length < 10) { showError(input, 'Please enter a valid phone number (10+ digits)'); return false; }
+          if (digits.length > 15) { showError(input, 'Phone number is too long'); return false; }
+          markValid(input); return true;
+        }
+
+        markValid(input); return true;
+      }
+
+      // Real-time validation on blur and input
+      form.querySelectorAll<HTMLInputElement>('.form-input').forEach((input) => {
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => {
+          if (input.classList.contains('!border-red-400/70')) validateField(input);
+        });
+      });
+
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // Validate all fields
+        const inputs = form.querySelectorAll<HTMLInputElement>('.form-input');
+        let isValid = true;
+        let firstInvalid: HTMLInputElement | null = null;
+        inputs.forEach((input) => {
+          if (!validateField(input)) {
+            isValid = false;
+            if (!firstInvalid) firstInvalid = input;
+          }
+        });
+
+        if (!isValid) {
+          firstInvalid?.focus();
+          return;
+        }
+
         const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
         const originalHTML = btn.innerHTML;
         btn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...';
@@ -663,7 +740,7 @@ import Layout from '../layouts/Layout.astro';
             throw new Error('Form submission failed');
           }
         } catch (error) {
-          // Still show thank you — the submission likely went through
+          // Still show thank you - the submission likely went through
           // or we want a graceful experience regardless
           form.innerHTML = `
             <div class="text-center py-8">
